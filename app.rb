@@ -7,19 +7,18 @@ require 'dotenv/load'
 require 'letter_opener'
 
 post '/check' do
-  200
-  # @api_key = ENV['API_KEY']
-  # @form_data = params
-  #
-  # create_kontragent
-  # update_kontragent_settlement_account
-  # create_bill
-  #
-  # @bill_link = 'https://www.moedelo.org' + @new_bill['Online']
-  #
-  # unless @new_bill['Online'].nil? || @new_bill['Online'] == ''
-  #   send_email
-  # end
+  @api_key = ENV['API_KEY']
+  @form_data = params
+
+  create_kontragent
+  update_kontragent_settlement_account
+  create_bill
+
+  @bill_link = 'https://www.moedelo.org' + @new_bill['Online']
+
+  unless @new_bill['Online'].nil? || @new_bill['Online'] == ''
+    send_email
+  end
 end
 
 def create_kontragent
