@@ -133,5 +133,5 @@ def send_email
       }
     }
   end
-  Pony.mail(to: ENV["DESTINATION_EMAIL_ADDRESS"])
+  Pony.mail(to: @form_data['CustomerEmail'])
 end
