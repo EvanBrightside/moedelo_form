@@ -117,18 +117,19 @@ def send_email
     }
   else
     Pony.options = {
-      :subject => "New contract-bill",
-      :body => "#{@bill_link}",
-      :via => :smtp,
-      :via_options => {
-        :address              => 'smtp.yandex.ru',
-        :port                 => 25,
-        :user_name            => 'wmzstage@molinos.dev',
-        :password             => 't2Du3TQReEHw9j',
-        :authentication       => :plain,
-        :domain               => 'yandex.ru',
-        :enable_starttls_auto => true,
-        :openssl_verify_mode  => 'none'
+      from: 'pony@mail.com',
+      subject: "New contract-bill",
+      body: "#{@bill_link}",
+      via: :smtp,
+      via_options: {
+        address:              'smtp.yandex.ru',
+        port:                 25,
+        user_name:            'wmzstage@molinos.dev',
+        password:             't2Du3TQReEHw9j',
+        authentication:       :plain,
+        domain:               'yandex.ru',
+        enable_starttls_auto: true,
+        openssl_verify_mode:  'none'
       }
     }
   end
