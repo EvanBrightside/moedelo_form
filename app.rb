@@ -122,12 +122,12 @@ def send_email
       body: "#{@bill_link}",
       via: :smtp,
       via_options: {
-        address:              'smtp.yandex.ru',
-        port:                 25,
-        user_name:            'wmzstage@molinos.dev',
-        password:             't2Du3TQReEHw9j',
+        address:              ENV['SMTP_SERVER'],
+        port:                 ENV['SMTP_PORT'],
+        user_name:            ENV['MAIL_USER_NAME'],
+        password:             ENV['MAIL_PASSWORD'],
         authentication:       :plain,
-        domain:               'yandex.ru',
+        domain:               ENV['DOMAIN'],
         enable_starttls_auto: true,
         openssl_verify_mode:  'none'
       }
