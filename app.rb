@@ -46,9 +46,9 @@ def create_kontragent
   begin
     ka_response = RestClient.post ka_url, ka_data, {content_type: :json, accept: :json, 'md-api-key': @api_key}
   rescue RestClient::ExceptionWithResponse => e
-    JSON.parse(e.response.body)
+    puts JSON.parse(e.response.body)
   end
-  new_ka = JSON.parse(ka_response.body)
+  new_ka = JSON.parse(ka_response&.body)
   @ka_id = new_ka['Id']
 end
 
@@ -63,7 +63,7 @@ def update_kontragent_settlement_account
   begin
     RestClient.post ka_url, ka_sa_data, {content_type: :json, accept: :json, 'md-api-key': @api_key}
   rescue RestClient::ExceptionWithResponse => e
-    JSON.parse(e.response.body)
+    puts JSON.parse(e.response.body)
   end
 end
 
@@ -100,10 +100,10 @@ def create_bill
   begin
     bill_response = RestClient.post bill_url, bill_data.to_json, {content_type: :json, accept: :json, 'md-api-key': @api_key}
   rescue RestClient::ExceptionWithResponse => e
-    JSON.parse(e.response.body)
+    puts JSON.parse(e.response.body)
   end
 
-  @new_bill = JSON.parse(bill_response.body)
+  @new_bill = JSON.parse(bill_response&.body)
 end
 
 def send_email
