@@ -72,9 +72,9 @@ def create_bill
   doc_date = Date.today.to_s
   item_name = @form_data['ItemName']
   count = @form_data['Count']
-  price = @form_data['Price'].empty? ? '0' : @form_data['Price']
-  additional_info = @form_data['AdditionalInfo'].empty? ? additional_info_text_data : @form_data['AdditionalInfo']
-  contract_subject = @form_data['ContractSubject'].empty? ? contract_subject_text_data : @form_data['ContractSubject']
+  price = @form_data['Price'].nil? ? '0' : @form_data['Price']
+  additional_info = @form_data['AdditionalInfo'].nil? ? additional_info_text_data : @form_data['AdditionalInfo']
+  contract_subject = @form_data['ContractSubject'].nil? ? contract_subject_text_data : @form_data['ContractSubject']
 
   bill_data = {
     "DocDate": doc_date,
