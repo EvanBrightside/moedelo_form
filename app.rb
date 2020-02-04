@@ -70,7 +70,7 @@ end
 def create_bill
   bill_url = 'https://restapi.moedelo.org/accounting/api/v1/sales/bill'
   doc_date = Date.today.to_s
-  item_name = @form_data['ItemName'].nil? ? '' : @form_data['ItemName']
+  item_name = @form_data['ItemName'].nil? ? 'Наименование товара или услуги' : @form_data['ItemName']
   count = @form_data['Count']
   price = @form_data['Price'].nil? ? '0' : @form_data['Price']
   additional_info = @form_data['AdditionalInfo'].nil? ? additional_info_text_data : @form_data['AdditionalInfo']
