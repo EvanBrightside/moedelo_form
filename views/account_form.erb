@@ -19,56 +19,77 @@
           <br>
           <div class="form-group">
             <label for="Name">Название организации или ФИО (если контрагент физ.лицо).</label>
-            <input type="text" class="form-control" id="Name" placeholder="ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО НЕФТЯНАЯ КОМПАНИЯ  РОСНЕФТЬ">
+            <input type="text" class="form-control" id="Name" required placeholder="ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО НЕФТЯНАЯ КОМПАНИЯ  РОСНЕФТЬ"
+                    oninvalid="this.setCustomValidity('Укажите название организации или ФИО')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Form">Организационная форма контрагента</label>
-            <select class="form-control" id="Form">
+            <select class="form-control" id="Form" required>
               <option>ИП</option>
               <option>Юр. лицо</option>
             </select>
           </div>
           <div class="form-group">
             <label for="Inn">ИНН</label>
-            <input type="text" class="form-control" id="Inn" placeholder="772471268535">
+            <input type="text" class="form-control" id="Inn" pattern="^([0-9]{10}|[0-9]{12})$" required placeholder="772471268535"
+                    oninvalid="this.setCustomValidity('Укажите ИНН (для ИП - 12 цифр, для Юр. лица - 10 цифр)')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Ogrn">ОГРН</label>
-            <input type="text" class="form-control" id="Ogrn" placeholder="316774600232189">
+            <input type="number" class="form-control" id="Ogrn" required placeholder="316774600232189"
+                    oninvalid="this.setCustomValidity('Укажите ОГРН')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Okpo">ОКПО</label>
-            <input type="text" class="form-control" id="Okpo" placeholder="0004442812">
+            <input type="number" class="form-control" id="Okpo" required placeholder="0004442812"
+                    oninvalid="this.setCustomValidity('Укажите ОКПО')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Kpp">КПП</label>
-            <input type="text" class="form-control" id="Kpp" placeholder="772501001">
+            <input type="number" class="form-control" id="Kpp" required placeholder="772501001"
+                    oninvalid="this.setCustomValidity('Укажите КПП')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="PaymentAccount">Расчетный Счет</label>
-            <input type="text" class="form-control" id="PaymentAccount" placeholder="40702810155000032453">
+            <input type="number" class="form-control" id="PaymentAccount" required placeholder="40702810155000032453"
+                    oninvalid="this.setCustomValidity('Укажите ваш расчетный счёт')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Bic">БИК</label>
-            <input type="text" class="form-control" id="Bic" placeholder="044030321">
+            <input type="number" class="form-control" id="Bic" required placeholder="044030321"
+                    oninvalid="this.setCustomValidity('Укажите БИК')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="LegalAddress">Юридический адрес</label>
-            <input type="text" class="form-control" id="LegalAddress" placeholder="115035, Г МОСКВА, НАБ СОФИЙСКАЯ, Д 26/11">
+            <input type="text" class="form-control" id="LegalAddress" required placeholder="115035, Г МОСКВА, НАБ СОФИЙСКАЯ, Д 26/11"
+                    oninvalid="this.setCustomValidity('Укажите ваш юридический адрес')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="ActualAddress">Почтовый адрес</label>
-            <input type="text" class="form-control" id="ActualAddress" placeholder="Г МОСКВА,СОФИЙСКАЯ НАБ, Д 26/11">
+            <input type="text" class="form-control" id="ActualAddress" required placeholder="Г МОСКВА,СОФИЙСКАЯ НАБ, Д 26/11"
+                    oninvalid="this.setCustomValidity('Укажите ваш почтовый адрес')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Count">Количество товаров(услуг) в шт.</label>
-            <input type="text" class="form-control" id="Count" placeholder="1">
+            <input type="number" class="form-control" id="Count" required placeholder="1"
+                    oninvalid="this.setCustomValidity('Укажите количество товаров(услуг) в штуках')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="CustomerEmail">Ваш e-mail</label>
-            <input type="text" class="form-control" id="CustomerEmail" placeholder="example@site.com">
+            <input type="email" class="form-control" id="CustomerEmail" required placeholder="Enter a valid email address"
+                    oninvalid="this.setCustomValidity('Укажите ваш e-mail')"
+                    oninput="this.setCustomValidity('')"/>
           </div>
-
           <button type="submit" class="btn btn-success">Отправить</button>
         </form>
       </div>
