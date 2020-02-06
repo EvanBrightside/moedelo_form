@@ -5,8 +5,22 @@ require 'pry'
 require 'pony'
 require 'dotenv/load'
 require 'letter_opener'
+require 'slim'
 
-post '/check' do
+set :port, 8080
+set :static, true
+set :public_folder, "static"
+set :views, "views"
+
+use Rack::Auth::Basic do |username, password|
+  username == ENV['USERNAME'] && password == ENV['PASSWORD']
+end
+
+get '/' do
+  erb :account_form
+end
+
+post '/' do
   @api_key = ENV['API_KEY']
   @form_data = params
 

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Sinatra + Twitter Bootstrap</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <%if @error then %>
+            <div class="alert alert-error"><%=@error%></div>
+        <% end %>
+        <form action="/" method="post">
+          <br>
+          <div class="form-group">
+            <label for="Name">Название организации или ФИО (если контрагент физ.лицо).</label>
+            <input type="text" class="form-control" id="Name" placeholder="ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО НЕФТЯНАЯ КОМПАНИЯ  РОСНЕФТЬ">
+          </div>
+          <div class="form-group">
+            <label for="Form">Организационная форма контрагента</label>
+            <select class="form-control" id="Form">
+              <option>ИП</option>
+              <option>Юр. лицо</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Inn">ИНН</label>
+            <input type="text" class="form-control" id="Inn" placeholder="772471268535">
+          </div>
+          <div class="form-group">
+            <label for="Ogrn">ОГРН</label>
+            <input type="text" class="form-control" id="Ogrn" placeholder="316774600232189">
+          </div>
+          <div class="form-group">
+            <label for="Okpo">ОКПО</label>
+            <input type="text" class="form-control" id="Okpo" placeholder="0004442812">
+          </div>
+          <div class="form-group">
+            <label for="Kpp">КПП</label>
+            <input type="text" class="form-control" id="Kpp" placeholder="772501001">
+          </div>
+          <div class="form-group">
+            <label for="PaymentAccount">Расчетный Счет</label>
+            <input type="text" class="form-control" id="PaymentAccount" placeholder="40702810155000032453">
+          </div>
+          <div class="form-group">
+            <label for="Bic">БИК</label>
+            <input type="text" class="form-control" id="Bic" placeholder="044030321">
+          </div>
+          <div class="form-group">
+            <label for="LegalAddress">Юридический адрес</label>
+            <input type="text" class="form-control" id="LegalAddress" placeholder="115035, Г МОСКВА, НАБ СОФИЙСКАЯ, Д 26/11">
+          </div>
+          <div class="form-group">
+            <label for="ActualAddress">Почтовый адрес</label>
+            <input type="text" class="form-control" id="ActualAddress" placeholder="Г МОСКВА,СОФИЙСКАЯ НАБ, Д 26/11">
+          </div>
+          <div class="form-group">
+            <label for="Count">Количество товаров(услуг) в шт.</label>
+            <input type="text" class="form-control" id="Count" placeholder="1">
+          </div>
+          <div class="form-group">
+            <label for="CustomerEmail">Ваш e-mail</label>
+            <input type="text" class="form-control" id="CustomerEmail" placeholder="example@site.com">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
