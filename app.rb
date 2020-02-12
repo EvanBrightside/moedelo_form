@@ -32,6 +32,7 @@ post '/' do
   unless @new_bill['Online'].nil? || @new_bill['Online'] == ''
     send_email
   end
+  erb :index
 end
 
 def create_kontragent
@@ -51,7 +52,7 @@ def create_kontragent
     "Form": ka_form,
     "Inn": @form_data['Inn'],
     "Ogrn": @form_data['Ogrn'],
-    "Okpo": @form_data['Okpo'],
+    # "Okpo": @form_data['Okpo'],
     "Kpp": @form_data['Kpp'],
     "LegalAddress": @form_data['LegalAddress'],
     "ActualAddress": @form_data['ActualAddress']

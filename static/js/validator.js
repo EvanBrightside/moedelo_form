@@ -43,7 +43,7 @@ form.addEventListener('submit', (event) => {
     }
   });
 
-  if (array.length === (inputs.length-4)) {
+  if (array.length === (inputs.length-3)) {
     form.submit();
   }
 })
