@@ -2,11 +2,9 @@
 <html lang="en">
   <head>
   <title>My way form</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   </head>
   <body>
@@ -15,89 +13,98 @@
         <%if @error then %>
             <div class="alert alert-error"><%=@error%></div>
         <% end %>
-        <form action="/" method="post">
+        <form id="myForm" class="j-form-validate" method="POST" action="/">
           <br>
           <div class="form-group">
             <label for="Name">Название организации или ФИО (если контрагент физ.лицо).</label>
-            <input type="text" class="form-control" id="Name" required placeholder="ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО НЕФТЯНАЯ КОМПАНИЯ  РОСНЕФТЬ"
+            <input type="text" class="form-control" name="Name" required placeholder="ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО НЕФТЯНАЯ КОМПАНИЯ РОСНЕФТЬ"
                     oninvalid="this.setCustomValidity('Укажите название организации или ФИО')"
                     oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
           <div class="form-group">
-            <label for="Form">Организационная форма контрагента</label>
-            <select class="form-control" id="Form" required>
+            <label for="Ogr_form">Организационная форма контрагента</label>
+            <select class="form-control" id="Ogr_form" name="Ogr_form" required>
               <option>ИП</option>
               <option>Юр. лицо</option>
             </select>
           </div>
           <div class="form-group">
             <label for="Inn">ИНН</label>
-            <input type="text" class="form-control" id="Inn" pattern="^([0-9]{10}|[0-9]{12})$" required placeholder="772471268535"
-                    oninvalid="this.setCustomValidity('Укажите ИНН (для ИП - 12 цифр, для Юр. лица - 10 цифр)')"
+            <input type="text" class="form-control" id="Inn" name="Inn"  required placeholder="772471268535"
+                    oninvalid="this.setCustomValidity('Укажите ИНН')"
                     oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
+          <!-- pattern="^([0-9]{10}|[0-9]{12})$" -->
           <div class="form-group">
-            <label for="Ogrn">ОГРН</label>
-            <input type="number" class="form-control" id="Ogrn" required placeholder="316774600232189"
-                    oninvalid="this.setCustomValidity('Укажите ОГРН')"
+            <label for="Ogrn">ОГРН (ОГРНИП)</label>
+            <input type="number" class="form-control" id="Ogrn" name="Ogrn" required placeholder="316774600232189"
+                    oninvalid="this.setCustomValidity('Укажите ОГРН (ОГРНИП)')"
                     oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
           <div class="form-group">
             <label for="Okpo">ОКПО</label>
-            <input type="number" class="form-control" id="Okpo" required placeholder="0004442812"
+            <input type="number" class="form-control" id="Okpo" name="Okpo" required placeholder="0004442812"
                     oninvalid="this.setCustomValidity('Укажите ОКПО')"
                     oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
           <div class="form-group">
             <label for="Kpp">КПП</label>
-            <input type="number" class="form-control" id="Kpp" required placeholder="772501001"
+            <input type="text" class="form-control" id="Kpp" name="Kpp" required placeholder="772501001"
                     oninvalid="this.setCustomValidity('Укажите КПП')"
                     oninput="this.setCustomValidity('')"/>
-          </div>
-          <div class="form-group">
-            <label for="PaymentAccount">Расчетный Счет</label>
-            <input type="number" class="form-control" id="PaymentAccount" required placeholder="40702810155000032453"
-                    oninvalid="this.setCustomValidity('Укажите ваш расчетный счёт')"
-                    oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
           <div class="form-group">
             <label for="Bic">БИК</label>
-            <input type="number" class="form-control" id="Bic" required placeholder="044030321"
+            <input type="number" class="form-control" id="Bic" name="Bic" required placeholder="044525386"
                     oninvalid="this.setCustomValidity('Укажите БИК')"
                     oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="PaymentAccount">Расчетный Счет</label>
+            <input type="number" class="form-control" id="PaymentAccount" name="PaymentAccount" required placeholder="40817810000013251376"
+                    oninvalid="this.setCustomValidity('Укажите ваш расчетный счёт')"
+                    oninput="this.setCustomValidity('')"/>
+            <div class="input-error"></div>
           </div>
           <div class="form-group">
             <label for="LegalAddress">Юридический адрес</label>
-            <input type="text" class="form-control" id="LegalAddress" required placeholder="115035, Г МОСКВА, НАБ СОФИЙСКАЯ, Д 26/11"
+            <input type="text" class="form-control" id="LegalAddress" name="LegalAddress" required placeholder="115035, Г МОСКВА, НАБ СОФИЙСКАЯ, Д 26/11"
                     oninvalid="this.setCustomValidity('Укажите ваш юридический адрес')"
                     oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="ActualAddress">Почтовый адрес</label>
-            <input type="text" class="form-control" id="ActualAddress" required placeholder="Г МОСКВА,СОФИЙСКАЯ НАБ, Д 26/11"
+            <input type="text" class="form-control" id="ActualAddress" name="ActualAddress" required placeholder="Г МОСКВА,СОФИЙСКАЯ НАБ, Д 26/11"
                     oninvalid="this.setCustomValidity('Укажите ваш почтовый адрес')"
                     oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="Count">Количество товаров(услуг) в шт.</label>
-            <input type="number" class="form-control" id="Count" required placeholder="1"
+            <input type="number" class="form-control" id="Count" name="Count" required placeholder="1"
                     oninvalid="this.setCustomValidity('Укажите количество товаров(услуг) в штуках')"
                     oninput="this.setCustomValidity('')"/>
           </div>
           <div class="form-group">
             <label for="CustomerEmail">Ваш e-mail</label>
-            <input type="email" class="form-control" id="CustomerEmail" required placeholder="Enter a valid email address"
+            <input type="email" class="form-control" id="CustomerEmail" name="CustomerEmail" required placeholder="Enter a valid email address"
                     oninvalid="this.setCustomValidity('Укажите ваш e-mail')"
                     oninput="this.setCustomValidity('')"/>
           </div>
           <button type="submit" class="btn btn-success">Отправить</button>
+          <br>
         </form>
       </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/validator.js"></script>
   </body>
 </html>

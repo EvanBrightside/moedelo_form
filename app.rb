@@ -12,9 +12,9 @@ set :static, true
 set :public_folder, "static"
 set :views, "views"
 
-use Rack::Auth::Basic do |username, password|
-  username == ENV['USERNAME'] && password == ENV['PASSWORD']
-end
+# use Rack::Auth::Basic do |username, password|
+#   username == ENV['USERNAME'] && password == ENV['PASSWORD']
+# end
 
 get '/' do
   erb :account_form
@@ -23,7 +23,6 @@ end
 post '/' do
   @api_key = ENV['API_KEY']
   @form_data = params
-
   create_kontragent
   update_kontragent_settlement_account
   create_bill
@@ -37,13 +36,13 @@ end
 
 def create_kontragent
   ka_url = 'https://restapi.moedelo.org/kontragents/api/v1/kontragent'
-  ka_form = case @form_data["Form"]
+  ka_form = case @form_data["Ogr_form"]
   when "Юр. лицо"
     'UL'
   when "ИП"
     'IP'
   else
-    "Error: ka form has an invalid value (#{@form_data["Form"]})"
+    "Error: ka form has an invalid value (#{@form_data["Ogr_form"]})"
   end
 
   ka_data = {
@@ -57,9 +56,12 @@ def create_kontragent
     "LegalAddress": @form_data['LegalAddress'],
     "ActualAddress": @form_data['ActualAddress']
   }
+
   begin
     ka_response = RestClient.post ka_url, ka_data, {content_type: :json, accept: :json, 'md-api-key': @api_key}
   rescue RestClient::ExceptionWithResponse => e
+    # binding.pry
+    # erb: incorrect_input (JSON.parse(e.response.body))
     puts JSON.parse(e.response.body)
   end
   new_ka = JSON.parse(ka_response&.body)
@@ -84,9 +86,9 @@ end
 def create_bill
   bill_url = 'https://restapi.moedelo.org/accounting/api/v1/sales/bill'
   doc_date = Date.today.to_s
-  item_name = @form_data['ItemName'].nil? ? 'Наименование товара или услуги' : @form_data['ItemName']
+  # item_name = @form_data['ItemName'].nil? ? 'Наименование товара или услуги' : @form_data['ItemName']
   count = @form_data['Count']
-  price = @form_data['Price'].nil? ? '0' : @form_data['Price']
+  # price = @form_data['Price'].nil? ? '0' : @form_data['Price']
   additional_info = @form_data['AdditionalInfo'].nil? ? additional_info_text_data : @form_data['AdditionalInfo']
   contract_subject = @form_data['ContractSubject'].nil? ? contract_subject_text_data : @form_data['ContractSubject']
 
@@ -218,4 +220,16 @@ def additional_info_text_data
     формулировки приложения к Договору.
 
   INFO
+end
+
+def item_name
+  <<~INFO
+    Информационно-консультативные услуги в виде
+    участия в мероприятии 'Как инвестировать в рынок
+    страхования', 18 декабря 2019. 1 участник.
+  INFO
+end
+
+def price
+  '9999'
 end
