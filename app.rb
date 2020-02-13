@@ -127,7 +127,7 @@ def send_email
   if Sinatra::Base.environment.to_s == 'development'
     Pony.options = {
       from: ENV['EMAIL_FROM'],
-      subject: "New contract-bill",
+      subject: "United Investors. Счет-договор для оплаты",
       body: "#{@bill_link}",
       via: LetterOpener::DeliveryMethod,
       via_options: {:location => File.expand_path('../tmp/letter_opener', __FILE__)}
@@ -135,7 +135,7 @@ def send_email
   else
     Pony.options = {
       from: ENV['EMAIL_FROM'],
-      subject: "New contract-bill",
+      subject: "United Investors. Счет-договор для оплаты",
       body: "#{@bill_link}",
       via: :smtp,
       via_options: {
